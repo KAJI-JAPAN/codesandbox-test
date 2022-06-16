@@ -19,8 +19,7 @@ const eventAdd = () => {
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", () => {
     // 未完了のTODOから削除
-    const completeTarget = completeButton.parentNode;
-    document.getElementById("incomplete-list").removeChild(completeTarget);
+    deleteFromCompleteList(completeButton.parentNode);
 
     // 完了したTODOに追加
     const backButton = document.createElement("button");
@@ -49,8 +48,7 @@ const eventAdd = () => {
   deleteButton.innerText = "削除";
   deleteButton.addEventListener("click", () => {
     // 押された削除ボタンの親タグを削除
-    const deleteTarget = deleteButton.parentNode;
-    document.getElementById("incomplete-list").removeChild(deleteTarget);
+    deleteFromCompleteList(deleteButton.parentNode);
   });
 
   //  追加
@@ -62,3 +60,8 @@ const eventAdd = () => {
 document
   .getElementById("add-button")
   .addEventListener("click", () => eventAdd());
+
+// 未完了リストから指定の要素を削除
+const deleteFromCompleteList = (target) => {
+  document.getElementById("incomplete-list").removeChild(target);
+};
